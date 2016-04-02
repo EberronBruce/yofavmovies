@@ -47,7 +47,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        goToDescriptionScreen(movies[0])
+        let movie = movies[indexPath.row]
+        goToDescriptionScreen(movie)
     }
 
     
@@ -57,7 +58,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
-        //return 10
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -78,6 +78,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func goToDescriptionScreen(movie: Movie) {
         performSegueWithIdentifier("toDetailScreen", sender: movie)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toDetailScreen" {
+            let detailVC = segue.destinationViewController as! DetailVC
+            detailVC.movie = sender as? Movie
+        }
     }
     
     
