@@ -9,8 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     @IBOutlet weak var tableView: UITableView!
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        setUpLogoInNavigationBar()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -32,6 +35,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return UITableViewCell()
     }
 
+    @IBAction func addTapped(sender: UIBarButtonItem) {
+        performSegueWithIdentifier("toAddScreen", sender: nil)
+    }
+    
+    
+    func setUpLogoInNavigationBar() {
+        
+        let imageView = UIImageView(frame: CGRect(x:0, y:0, width: 135, height: 50))
+        imageView.contentMode = .ScaleAspectFit
+        let image = UIImage(named: "logo")
+        imageView.image = image
+        
+        self.navigationItem.titleView = imageView
+
+    }
 
 }
 

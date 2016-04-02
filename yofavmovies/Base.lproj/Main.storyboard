@@ -29,7 +29,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="133"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ob2-Fv-o5Z">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ob2-Fv-o5Z">
                                                     <rect key="frame" x="8" y="17" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="GMc-J7-7ya"/>
@@ -79,6 +79,12 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="Ob2-Fv-o5Z" secondAttribute="bottom" constant="8" id="yYn-Yb-iZc"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="movieDesc" destination="Cs4-fi-DCI" id="x34-wI-ltM"/>
+                                            <outlet property="movieImg" destination="Ob2-Fv-o5Z" id="I5K-0H-cUt"/>
+                                            <outlet property="movieLink" destination="c7x-vs-1YC" id="X2z-EM-jTN"/>
+                                            <outlet property="movieTitle" destination="Eqk-Pb-SKf" id="1NS-Th-r2g"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -93,11 +99,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="udA-Fv-wPW">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="XKk-LD-xHn">
-                            <color key="tintColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addTapped:" destination="BYZ-38-t0r" id="xaS-zQ-hoU"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="Ynt-ew-eik" kind="presentation" identifier="toAddScreen" modalTransitionStyle="flipHorizontal" id="fFJ-xa-hRI"/>
+                        <outlet property="tableView" destination="wbk-fe-KiN" id="OB6-gh-G14"/>
+                        <segue destination="Ynt-ew-eik" kind="presentation" identifier="toAddScreen" modalTransitionStyle="partialCurl" id="fFJ-xa-hRI"/>
                         <segue destination="uiC-IF-oJS" kind="show" identifier="toDetailScreen" id="PU3-CG-er3"/>
                     </connections>
                 </viewController>
@@ -118,7 +128,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title Of Movie" id="jnq-dJ-GBV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Dz-PG-j43" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -135,8 +144,110 @@
                     <view key="view" contentMode="scaleToFill" id="P9t-2V-iNn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Msb-Kz-ao5">
+                                <rect key="frame" x="225" y="40" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="3xL-1G-XiN"/>
+                                    <constraint firstAttribute="height" constant="150" id="CxN-0X-KoQ"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkN-kU-xZz">
+                                <rect key="frame" x="225" y="40" width="150" height="150"/>
+                                <state key="normal" title="Add New Picture">
+                                    <color key="titleColor" red="0.79215693470000004" green="0.11372549830000001" blue="0.11372549830000001" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Title Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nwg-fn-GBk">
+                                <rect key="frame" x="20" y="210" width="560" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Gzb-hw-Gdy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter What You Like Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i1k-dt-vX4">
+                                <rect key="frame" x="20" y="262" width="560" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="iZP-Ne-1AE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter The IMDB Plot Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TFu-4V-P5p">
+                                <rect key="frame" x="20" y="314" width="560" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="SvS-n1-Exd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the IMDB Url Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yDh-OZ-7MT">
+                                <rect key="frame" x="20" y="366" width="560" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Do8-Lu-leZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIO-fu-tS2" customClass="Button" customModule="yofavmovies" customModuleProvider="target">
+                                <rect key="frame" x="20" y="28" width="70" height="40"/>
+                                <color key="backgroundColor" red="0.79215693470000004" green="0.11372549830000001" blue="0.11372549830000001" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="F0T-jv-Q1s"/>
+                                    <constraint firstAttribute="width" constant="70" id="qpg-eP-XkM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelTapped:" destination="Ynt-ew-eik" eventType="touchUpInside" id="zHe-BP-0vg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Or9-yN-QYe" customClass="Button" customModule="yofavmovies" customModuleProvider="target">
+                                <rect key="frame" x="225" y="436" width="150" height="60"/>
+                                <color key="backgroundColor" red="0.79215693470000004" green="0.11372549830000001" blue="0.11372549830000001" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="5oW-5z-dfh"/>
+                                    <constraint firstAttribute="height" constant="60" id="Agh-F5-4b6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="25"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kkN-kU-xZz" firstAttribute="width" secondItem="Msb-Kz-ao5" secondAttribute="width" id="3Jg-kI-msn"/>
+                            <constraint firstItem="i1k-dt-vX4" firstAttribute="leading" secondItem="P9t-2V-iNn" secondAttribute="leadingMargin" id="EDm-PX-TV1"/>
+                            <constraint firstItem="kkN-kU-xZz" firstAttribute="centerX" secondItem="Msb-Kz-ao5" secondAttribute="centerX" id="EHu-aP-VGi"/>
+                            <constraint firstItem="kkN-kU-xZz" firstAttribute="centerY" secondItem="Msb-Kz-ao5" secondAttribute="centerY" id="F2E-8y-u75"/>
+                            <constraint firstItem="i1k-dt-vX4" firstAttribute="top" secondItem="nwg-fn-GBk" secondAttribute="bottom" constant="12" id="Hhx-ID-oHb"/>
+                            <constraint firstItem="nwg-fn-GBk" firstAttribute="leading" secondItem="P9t-2V-iNn" secondAttribute="leadingMargin" id="Hiu-IE-IXt"/>
+                            <constraint firstItem="yDh-OZ-7MT" firstAttribute="top" secondItem="TFu-4V-P5p" secondAttribute="bottom" constant="12" id="N3R-gv-31T"/>
+                            <constraint firstItem="Or9-yN-QYe" firstAttribute="centerX" secondItem="P9t-2V-iNn" secondAttribute="centerX" id="N4g-1M-BWf"/>
+                            <constraint firstItem="Msb-Kz-ao5" firstAttribute="centerX" secondItem="P9t-2V-iNn" secondAttribute="centerX" id="PVn-7i-3cq"/>
+                            <constraint firstItem="qIO-fu-tS2" firstAttribute="leading" secondItem="P9t-2V-iNn" secondAttribute="leadingMargin" id="QB3-pO-nCT"/>
+                            <constraint firstItem="TFu-4V-P5p" firstAttribute="trailing" secondItem="P9t-2V-iNn" secondAttribute="trailingMargin" id="Wve-8B-7ue"/>
+                            <constraint firstItem="qIO-fu-tS2" firstAttribute="top" secondItem="dyW-Te-1Tq" secondAttribute="bottom" constant="8" id="deG-UF-8Le"/>
+                            <constraint firstItem="Msb-Kz-ao5" firstAttribute="top" secondItem="dyW-Te-1Tq" secondAttribute="bottom" constant="20" id="e38-M2-ieh"/>
+                            <constraint firstItem="yDh-OZ-7MT" firstAttribute="leading" secondItem="P9t-2V-iNn" secondAttribute="leadingMargin" id="gOX-V1-ghx"/>
+                            <constraint firstItem="nwg-fn-GBk" firstAttribute="trailing" secondItem="P9t-2V-iNn" secondAttribute="trailingMargin" id="h7X-XT-o8X"/>
+                            <constraint firstItem="Or9-yN-QYe" firstAttribute="top" secondItem="yDh-OZ-7MT" secondAttribute="bottom" constant="30" id="hgZ-pD-cFV"/>
+                            <constraint firstItem="kkN-kU-xZz" firstAttribute="height" secondItem="Msb-Kz-ao5" secondAttribute="height" id="lDX-UG-zj9"/>
+                            <constraint firstItem="i1k-dt-vX4" firstAttribute="trailing" secondItem="P9t-2V-iNn" secondAttribute="trailingMargin" id="r8z-uw-ddV"/>
+                            <constraint firstItem="yDh-OZ-7MT" firstAttribute="trailing" secondItem="P9t-2V-iNn" secondAttribute="trailingMargin" id="s0h-aB-IHv"/>
+                            <constraint firstItem="TFu-4V-P5p" firstAttribute="leading" secondItem="P9t-2V-iNn" secondAttribute="leadingMargin" id="tQF-0V-1G3"/>
+                            <constraint firstItem="nwg-fn-GBk" firstAttribute="top" secondItem="kkN-kU-xZz" secondAttribute="bottom" constant="20" id="v4w-Ii-q1r"/>
+                            <constraint firstItem="TFu-4V-P5p" firstAttribute="top" secondItem="i1k-dt-vX4" secondAttribute="bottom" constant="12" id="z6h-Mr-E5f"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="qIO-fu-tS2" id="XP7-T3-TAh"/>
+                        <outlet property="saveButton" destination="Or9-yN-QYe" id="f06-2e-GZi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TmD-P7-Eb7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
