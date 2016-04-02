@@ -23,7 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7A259F5D1CAFFFC700A4BE5D /* yofavmovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yofavmovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A259F5D1CAFFFC700A4BE5D /* YoFav Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YoFav Movies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A259F601CAFFFC700A4BE5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A259F621CAFFFC700A4BE5D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7A259F651CAFFFC700A4BE5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		7A259F5E1CAFFFC700A4BE5D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7A259F5D1CAFFFC700A4BE5D /* yofavmovies.app */,
+				7A259F5D1CAFFFC700A4BE5D /* YoFav Movies.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,7 +129,7 @@
 			);
 			name = yofavmovies;
 			productName = yofavmovies;
-			productReference = 7A259F5D1CAFFFC700A4BE5D /* yofavmovies.app */;
+			productReference = 7A259F5D1CAFFFC700A4BE5D /* YoFav Movies.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -310,7 +310,7 @@
 				INFOPLIST_FILE = yofavmovies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.redravencomputing.yofavmovies;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "YoFav Movies";
 			};
 			name = Debug;
 		};
@@ -321,7 +321,7 @@
 				INFOPLIST_FILE = yofavmovies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.redravencomputing.yofavmovies;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "YoFav Movies";
 			};
 			name = Release;
 		};
