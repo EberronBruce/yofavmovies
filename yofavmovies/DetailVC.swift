@@ -14,6 +14,8 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
 
     

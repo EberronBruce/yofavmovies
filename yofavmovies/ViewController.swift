@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    var movies = [Movie]()
     
 
 
@@ -23,20 +28,56 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         setUpLogoInNavigationBar()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        fetchAndSetResults()
+        tableView.reloadData()
+    }
+    
+    func fetchAndSetResults() {
+        let app = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = app.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Movie")
+        
+        do {
+            let results = try context.executeFetchRequest(fetchRequest)
+            self.movies = results as! [Movie]
+        } catch let err as NSError {
+            print(err.debugDescription)
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        goToDescriptionScreen(movies[0])
+    }
+
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return movies.count
+        //return 10
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        if let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell") as? MovieCell {
+            
+            let movie = movies[indexPath.row]
+            cell.configureCell(movie)
+            return cell
+            
+        } else {
+            return MovieCell()
+        }
     }
 
     @IBAction func addTapped(sender: UIBarButtonItem) {
         performSegueWithIdentifier("toAddScreen", sender: nil)
+    }
+    
+    func goToDescriptionScreen(movie: Movie) {
+        performSegueWithIdentifier("toDetailScreen", sender: movie)
     }
     
     
@@ -52,4 +93,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
 }
+
+
+
+
+
+
 

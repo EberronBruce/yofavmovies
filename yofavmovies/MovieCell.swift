@@ -9,7 +9,7 @@
 import UIKit
 
 class MovieCell: UITableViewCell {
-    @IBOutlet weak var movieImg: UIImageView!
+    @IBOutlet weak var movieImg: MovieImageView!
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieDesc: UILabel!
     @IBOutlet weak var movieLink: UILabel!
@@ -17,13 +17,20 @@ class MovieCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        movieImg.roundImageCorners()
+        
+        
+        
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configureCell(movie: Movie) {
+        movieTitle.text = movie.title
+        movieDesc.text = movie.descr
+        movieLink.text = movie.url
+        movieImg.image = movie.getMovieImage()
     }
+    
+    
 
 }

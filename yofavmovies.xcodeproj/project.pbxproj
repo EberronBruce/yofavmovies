@@ -19,6 +19,7 @@
 		7A259F7F1CB0072B00A4BE5D /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A259F7E1CB0072B00A4BE5D /* AddVC.swift */; };
 		7A259F811CB0073C00A4BE5D /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A259F801CB0073C00A4BE5D /* DetailVC.swift */; };
 		7A259F831CB014E100A4BE5D /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A259F821CB014E100A4BE5D /* Button.swift */; };
+		7A259F851CB01AE000A4BE5D /* MovieImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A259F841CB01AE000A4BE5D /* MovieImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		7A259F7E1CB0072B00A4BE5D /* AddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
 		7A259F801CB0073C00A4BE5D /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		7A259F821CB014E100A4BE5D /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		7A259F841CB01AE000A4BE5D /* MovieImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				7A259F7C1CB006FF00A4BE5D /* MovieCell.swift */,
 				7A259F821CB014E100A4BE5D /* Button.swift */,
+				7A259F841CB01AE000A4BE5D /* MovieImageView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A259F7A1CB006D300A4BE5D /* Movie+CoreDataProperties.swift in Sources */,
+				7A259F851CB01AE000A4BE5D /* MovieImageView.swift in Sources */,
 				7A259F631CAFFFC700A4BE5D /* ViewController.swift in Sources */,
 				7A259F7D1CB006FF00A4BE5D /* MovieCell.swift in Sources */,
 				7A259F691CAFFFC700A4BE5D /* yofavmovies.xcdatamodeld in Sources */,
